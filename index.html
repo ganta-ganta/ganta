@@ -22,19 +22,88 @@
 
     <!-- Custom CSS -->
     <style>
+        /* Gold background and bold black text for entire website */
         body {
             font-family: Arial, sans-serif;
+            background-color: #FFD700; /* Gold background */
+            color: #000; /* Black text */
+            font-weight: bold; /* Bold text */
         }
+        
+        /* Navbar styling */
+        .navbar {
+            background-color: #333; /* Dark background for contrast */
+        }
+        .navbar .nav-link, .navbar .navbar-brand {
+            color: #FFD700; /* Gold text for navbar */
+            font-weight: bold;
+        }
+        .navbar .nav-link:hover {
+            color: #fff;
+        }
+
+        /* Section headings and text styling */
+        h1, h2, h3, h4, h5, h6, p, a {
+            color: #000; /* Black text for consistency */
+            font-weight: bold;
+        }
+
+        /* Modal styling for under-construction message */
+        #constructionModal .modal-content {
+            background-color: #FFD700;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Service icons styling */
         .service-icon {
             font-size: 50px;
-            color: #007bff;
+            color: #000; /* Black icons for consistency */
         }
+
+        /* Button styling */
+        .btn-primary {
+            background-color: #333;
+            border-color: #333;
+            color: #FFD700;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #555;
+            border-color: #555;
+        }
+
     </style>
 </head>
 <body>
 
+    <!-- Under Construction Modal -->
+    <div class="modal fade" id="constructionModal" tabindex="-1" role="dialog" aria-labelledby="constructionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title" id="constructionModalLabel">
+                        <i class="fas fa-exclamation-triangle"></i> Under Construction
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <h4>This Website is Currently Under Construction</h4>
+                    <p>We’re working hard to bring you high-quality content. Please check back in a few days for the completed site.</p>
+                    <img src="https://via.placeholder.com/300x150.png?text=Under+Construction" alt="Under Construction" class="img-fluid my-3">
+                    <p>Thank you for your patience and support!</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">Ganta Solutions</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -78,43 +147,15 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center">About Us</h2>
-            <p class="text-center">Ganta Solutions is dedicated to providing top-quality web development and digital marketing services to help businesses thrive online.</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center">Contact Us</h2>
-            <form action="mailto:gantasolutions@gmail.com" method="post" enctype="text/plain" class="w-50 mx-auto">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center py-4 bg-dark text-light">
-        <p>&copy; 2024 Ganta Solutions. All rights reserved.</p>
-    </footer>
-
     <!-- jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script to Show Modal on Page Load -->
+    <script>
+        $(document).ready(function() {
+            $('#constructionModal').modal('show');
+        });
+    </script>
 </body>
 </html>
