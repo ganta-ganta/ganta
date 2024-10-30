@@ -98,14 +98,26 @@
     }
 
     /* Spin animation */
-    @keyframes spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
+    dots::after {
+  content: "";
+  animation: dots 1.5s steps(5, end) infinite;
+}
+keyframes dots {
+  0%, 20% {
+    content: "G";
+  }
+  40% {
+    content: "a"; 
+  }
+  60% {
+    content: "n";
+  }
+  80%{
+    content: "t";
+  }
+   100% {
+    content: "a";
+  }
     </style>
 </head>
 <body>
