@@ -317,14 +317,21 @@ footer a:hover {
   }, 3000);
 
   // Handle appointment form submission
-  document.getElementById('appointmentForm').onsubmit = function(e) {
-    e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const message = document.getElementById('message').value;
+document.getElementById('appointmentForm').onsubmit = function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  const message = document.getElementById('message').value;
 
+  // Store details in localStorage
+  const appointmentDetails = { name, email, date, time, message };
+  localStorage.setItem('appointmentDetails', JSON.stringify(appointmentDetails));
+
+  // Redirect to panel.html
+  window.location.href = 'panel.html';
+};
     // Simple alert to simulate appointment scheduling
     alert(`Appointment scheduled for ${name} on ${date} at ${time}.\nMessage: ${message}`);
     
