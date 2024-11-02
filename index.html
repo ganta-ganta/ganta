@@ -82,7 +82,7 @@ footer a:hover {
 </head>
 <body>
 
-<!-- Preloader --
+<!-- Preloader -->
 <div class="preloader">
   <svg width="300" height="300" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" stroke="#FFA500" stroke-width="10" stroke-linecap="round">
@@ -309,12 +309,41 @@ footer a:hover {
   </div>
 </footer>
 
+<script>
+  // Wait for 3 seconds (the duration of the preloader animation)
+  setTimeout(function() {
+    document.querySelector('.preloader').style.display = 'none'; // Hide preloader
+    document.querySelector('.main-content').style.display = 'block'; // Show main content
+  }, 3000);
+
+  // Handle appointment form submission
+  document.getElementById('appointmentForm').onsubmit = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const message = document.getElementById('message').value;
+
+    // Simple alert to simulate appointment scheduling
+    alert(`Appointment scheduled for ${name} on ${date} at ${time}.\nMessage: ${message}`);
+    // Store form data in localStorage
+    const appointmentDetails = { name, email, date, time, message };
+    localStorage.setItem('appointmentDetails', JSON.stringify(appointmentDetails));
+
+    // Redirect to panel.html to display the appointment details
+    window.location.href = 'panel.html';
+  };
+    
+    // Generate calendar link
+    const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Appointment%20with%20${encodeURIComponent(name)}&dates=${date}T${time}00Z/${date}T${time}00Z&details=${encodeURIComponent(message)}&location=Ganta%20Solutions`;
+    document.getElementById('calendarLink').setAttribute('href', calendarLink);
+    document.getElementById('calendarLink').setAttribute('target', '_blank');
+  };
+
+</script>
 
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Script to Show Modal on Page Load and Handle Preloader -->
 <script>
   $(document).ready(function() {
@@ -323,31 +352,16 @@ footer a:hover {
     // Wait for 3 seconds (the duration of the preloader animation)
     setTimeout(function() {
       document.querySelector('.preloader').style.display = 'none'; // Hide preloader
-      document.querySelector('.main-content').style.display = 'block'; // Sh<script>
-  document.getElementById('appointmentForm').onsubmit = function(e) {
-    e.preventDefault(); // Prevents the default form submission
-
-    // Collect data from form fields
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const date = document.getElementById('date').value;
-    const time = document.getElementById('time').value;
-    const message = document.getElementById('message').value;
-
-    // Store form data in localStorage
-    const appointmentDetails = { name, email, date, time, message };
-    localStorage.setItem('appointmentDetails', JSON.stringify(appointmentDetails));
-
-    // Redirect to panel.html to display the appointment details
-    window.location.href = 'panel.html';
-  };
+      document.querySelector('.main-content').style.display = 'block'; // Show main content
+      document.body.style.overflow = 'auto'; // Allow scrolling after preloader
+    }, 3000);
+  });
 </script>
 <!-- Bootstrap JS and dependencies (only include if needed) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<!-- Under Construction Modal -->
 
 </body>
 </html>
