@@ -311,49 +311,9 @@ footer a:hover {
 
 <script>
   // Wait for 3 seconds (the duration of the preloader animation)
-  <!-- Add this section within your main content where you want to display the appointments -->
-<h2>Appointment Control Panel</h2>
-<div id="appointmentList" class="mb-4"></div>
-
-  // Function to store appointment in local storage
-  function storeAppointment(appointment) {
-    const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
-    appointments.push(appointment);
-    localStorage.setItem('appointments', JSON.stringify(appointments));
-  }
-
-  // Function to retrieve appointments from local storage
-  function getAppointments() {
-    return JSON.parse(localStorage.getItem('appointments')) || [];
-  }
-
-  // Function to display appointments
-  function displayAppointments() {
-    const appointments = getAppointments();
-    const appointmentListDiv = document.getElementById('appointmentList');
-    appointmentListDiv.innerHTML = ''; // Clear the list
-
-    if (appointments.length === 0) {
-      appointmentListDiv.innerHTML = '<p>No appointments scheduled.</p>';
-      return;
-    }
-
-    const ul = document.createElement('ul');
-    appointments.forEach((appointment, index) => {
-      const li = document.createElement('li');
-      li.textContent = `Appointment for ${appointment.name} on ${appointment.date} at ${appointment.time}. Message: ${appointment.message}`;
-      ul.appendChild(li);
-    });
-
-    appointmentListDiv.appendChild(ul);
-  }
-
-  // Wait for 3 seconds (the duration of the preloader animation)
   setTimeout(function() {
     document.querySelector('.preloader').style.display = 'none'; // Hide preloader
     document.querySelector('.main-content').style.display = 'block'; // Show main content
-    document.body.style.overflow = 'auto'; // Allow scrolling after preloader
-    displayAppointments(); // Display existing appointments
   }, 3000);
 
   // Handle appointment form submission
@@ -365,19 +325,34 @@ footer a:hover {
     const time = document.getElementById('time').value;
     const message = document.getElementById('message').value;
 
-    const appointment = { name, email, date, time, message };
-    storeAppointment(appointment); // Store in local storage
-    displayAppointments(); // Refresh the displayed appointments
-
     // Simple alert to simulate appointment scheduling
     alert(`Appointment scheduled for ${name} on ${date} at ${time}.\nMessage: ${message}`);
     
-    // Optionally generate a calendar link here if you wish
+    // Generate calendar link
+    const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Appointment%20with%20${encodeURIComponent(name)}&dates=${date}T${time}00Z/${date}T${time}00Z&details=${encodeURIComponent(message)}&location=Ganta%20Solutions`;
+    document.getElementById('calendarLink').setAttribute('href', calendarLink);
+    document.getElementById('calendarLink').setAttribute('target', '_blank');
   };
 
 </script>
-  
 
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Script to Show Modal on Page Load and Handle Preloader -->
+<script>
+  $(document).ready(function() {
+    $('#constructionModal').modal('show');
+
+    // Wait for 3 seconds (the duration of the preloader animation)
+    setTimeout(function() {
+      document.querySelector('.preloader').style.display = 'none'; // Hide preloader
+      document.querySelector('.main-content').style.display = 'block'; // Show main content
+      document.body.style.overflow = 'auto'; // Allow scrolling after preloader
+    }, 3000);
+  });
+</script>
 <!-- Bootstrap JS and dependencies (only include if needed) -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
