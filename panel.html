@@ -8,27 +8,29 @@
 </head>
 <body class="bg-dark text-white">
   <div class="container mt-5">
-    <h1 class="text-center">Appointment Details</h1>
+    <h2 class="text-center">Your Scheduled Appointment</h2>
     <div id="appointmentDetails" class="mt-4"></div>
     <a href="index.html" class="btn btn-warning mt-4">Back to Home</a>
   </div>
 
   <script>
-    // Retrieve appointment details from localStorage
-    const appointmentDetails = JSON.parse(localStorage.getItem('appointmentDetails'));
+    document.addEventListener("DOMContentLoaded", function() {
+      // Retrieve the stored data from localStorage
+      const appointmentDetails = JSON.parse(localStorage.getItem('appointmentDetails'));
 
-    // Display details if available
-    if (appointmentDetails) {
-      document.getElementById('appointmentDetails').innerHTML = `
-        <p><strong>Name:</strong> ${appointmentDetails.name}</p>
-        <p><strong>Email:</strong> ${appointmentDetails.email}</p>
-        <p><strong>Date:</strong> ${appointmentDetails.date}</p>
-        <p><strong>Time:</strong> ${appointmentDetails.time}</p>
-        <p><strong>Message:</strong> ${appointmentDetails.message}</p>
-      `;
-    } else {
-      document.getElementById('appointmentDetails').innerHTML = `<p>No appointment details found.</p>`;
-    }
+      // Check if there is any data to display
+      if (appointmentDetails) {
+        document.getElementById('appointmentDetails').innerHTML = `
+          <p><strong>Name:</strong> ${appointmentDetails.name}</p>
+          <p><strong>Email:</strong> ${appointmentDetails.email}</p>
+          <p><strong>Date:</strong> ${appointmentDetails.date}</p>
+          <p><strong>Time:</strong> ${appointmentDetails.time}</p>
+          <p><strong>Message:</strong> ${appointmentDetails.message}</p>
+        `;
+      } else {
+        document.getElementById('appointmentDetails').innerHTML = `<p>No appointment details found.</p>`;
+      }
+    });
   </script>
 </body>
 </html>
