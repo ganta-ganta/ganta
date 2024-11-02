@@ -96,6 +96,17 @@ footer a:hover {
     </text>
   </svg>
 </div>
+  <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/66f292424cbc4814f7dddd54/1i8homlu3';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+  </script>
 
 <!-- Header -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -327,13 +338,6 @@ footer a:hover {
 
     // Simple alert to simulate appointment scheduling
     alert(`Appointment scheduled for ${name} on ${date} at ${time}.\nMessage: ${message}`);
-    // Store form data in localStorage
-    const appointmentDetails = { name, email, date, time, message };
-    localStorage.setItem('appointmentDetails', JSON.stringify(appointmentDetails));
-
-    // Redirect to panel.html to display the appointment details
-    window.location.href = 'panel.html';
-  };
     
     // Generate calendar link
     const calendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=Appointment%20with%20${encodeURIComponent(name)}&dates=${date}T${time}00Z/${date}T${time}00Z&details=${encodeURIComponent(message)}&location=Ganta%20Solutions`;
@@ -343,7 +347,10 @@ footer a:hover {
 
 </script>
 
-
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <!-- Script to Show Modal on Page Load and Handle Preloader -->
 <script>
   $(document).ready(function() {
@@ -362,6 +369,7 @@ footer a:hover {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<!-- Under Construction Modal -->
 
 </body>
 </html>
